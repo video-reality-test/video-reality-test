@@ -1,0 +1,9 @@
+[submodule "third_party/Wan2.2"]
+	path = third_party/Wan2.2
+	url = https://github.com/Wan-Video/Wan2.2.git
+[submodule "third_party/Open-Sora"]
+	path = third_party/Open-Sora
+	url = https://github.com/hpcaitech/Open-Sora.git
+[submodule "third_party/DiffSynth-Studio"]
+	path = third_party/DiffSynth-Studio
+	url = https://github.com/modelscope/DiffSynth-Studio.git
