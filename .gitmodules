@@ -7,3 +7,12 @@
 [submodule "third_party/DiffSynth-Studio"]
 	path = third_party/DiffSynth-Studio
 	url = https://github.com/modelscope/DiffSynth-Studio.git
+[submodule "video-generation/Wan2.2"]
+	path = video-generation/Wan2.2
+	url = https://github.com/Wan-Video/Wan2.2.git
+[submodule "video-generation/Open-Sora"]
+	path = video-generation/Open-Sora
+	url = https://github.com/hpcaitech/Open-Sora.git
+[submodule "video-generation/DiffSynth-Studio"]
+	path = video-generation/DiffSynth-Studio
+	url = https://github.com/modelscope/DiffSynth-Studio.git
