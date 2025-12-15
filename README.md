@@ -1,7 +1,7 @@
 # Video Reality Test
 
 - Paper: [paper]()
-- Project Page: [homepage](https://zhanyi1.github.io/VideoRealityTest/) Thanks zz for your contribution!😊😊😊, nice work with you!😘😚😘
+- Project Page: [homepage](https://video-reality-test.github.io/) 
 - Dataset: [hugginface](https://huggingface.co/datasets/kolerk/Video_Reality_Test), [modelscope](https://modelscope.cn/datasets/wjqkoko/Video_Reality_Test)
 
 ## 1. Brief Introduction
