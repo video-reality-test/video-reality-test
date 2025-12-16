@@ -6,12 +6,16 @@
 <p align="center">
   <a href="https://arxiv.org/abs/2512.13281" target="_blank"><img src="https://img.shields.io/badge/arXiv-2512.13281-red"></a>
   <a href="https://video-reality-test.github.io/" target="_blank"><img src="https://img.shields.io/badge/Project-Page-brightgreen"></a>
-  <a href="https://huggingface.co/datasets/kolerk/Video_Reality_Test" target="_blank"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue"></a>
-  <a href="https://modelscope.cn/datasets/wjqkoko/Video_Reality_Test" target="_blank"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-orange"></a>
+  <a href="https://huggingface.co/datasets/kolerk/Video_Reality_Test" target="_blank"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-blue"></a>
+  <a href="https://modelscope.cn/datasets/wjqkoko/Video_Reality_Test" target="_blank"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Model%20Scope-Dataset-orange"></a>
 </p>
 
 ## 1. Brief Introduction
-Recent video generators can already mimic real footage, forcing us to rethink how we detect AI-produced clips—especially when audio is involved. To this end, we propose the benchmark Video Reality Test , which tackles this gap with ASMR-origin videos where subtle action–object cues matter and sound must stay locked to the visuals. Models play the “creator” role while VLMs act as reviewers, mirroring a peer-review loop that stresses perceptual realism rather than coarse classification. Experiments reveal how far systems like Veo3.1-Fast can go (fooling many VLMs) and how even strong reviewers such as Gemini 2.5-Pro still trail human experts, highlighting remaining weaknesses around audio–visual alignment and watermark reliance.
+We introduce Video Reality Test, an ASMR-sourced video benchmark suite for testing perceptual realism under tight audio–visual coupling, featuring the following dimensions: 
+
+(i) Immersive ASMR video-audio sources. Built on carefully curated real ASMR videos, the benchmark targets fine-grained action–object interactions with diversity across objects, actions, and backgrounds. 
+
+(ii) Peer-Review evaluation. An adversarial creator–reviewer protocol where video generation models act as creators aiming to fool reviewers, while VLMs serve as reviewers seeking to identify fakeness.
 
 ## 2. Todo List
 - [x] Public paper
@@ -20,9 +24,14 @@ Recent video generators can already mimic real footage, forcing us to rethink ho
 - [ ] Publish video generation code
 
 ## 3. Dataset Introduction
-We release the complete ASMR corpus: real videos, extracted images, prompts, and outputs from 13 different video-generation settings (OpenSoraV2, Wan2.2, Sora2 variants, Veo3.1-fast, Diffsynth-Studio Hunyuan/StepFun, etc.). For each of the 149 scenes we therefore provide `1 + k` clips (with `k = 13` fakery families), enabling fine-grained studies of how creators vary while sharing identical textual grounding. Both ModelScope and Hugging Face mirrors host identical content; pick whichever CDN suits your location.
 
-The layout below shows how the data is organized once `Video_Reality_Test.tar.gz` (or the ModelScope folder) is unpacked.
+1. We release the real ASMR corpus: real videos, extracted images, and prompts, with a total of 149 (100 hard level + 49 easy).
+2. We release the AI-generated ASMR videos from 13 different video-generation settings (OpenSoraV2, Wan2.2, Sora2 variants, Veo3.1-fast, Diffsynth-Studio Hunyuan/StepFun, etc.), with a total of 149 x 13.
+3. We therefore provide `1 + k` clips (with `k = 13` fakery families), enabling fine-grained studies of how creators vary while sharing identical textual grounding.
+
+
+We give the dataset folders in HuggingFace, the folders and the compressed files `Video_Reality_Test.tar.gz` in ModelScope. Both ModelScope and Hugging Face mirrors host identical content; pick whichever CDN suits your location.
+The layout below shows how the data is organized once `Video_Reality_Test.tar.gz` is unpacked.
 
 ### Layout
 - `Video_Reality_Test.tar.gz` — monolithic archive containing every real video, generated video, and metadata file. Use `tar -xzf Video_Reality_Test.tar.gz` to recreate the folder layout described below.
@@ -80,7 +89,7 @@ Unless otherwise noted, we kept the native sampler settings of each platform so 
    ```
 
 ## 5. Citation
-Please cite the VRT paper when using this benchmark:
+Please cite the video reality test paper when using this benchmark:
 
 ```
 @misc{wang2025videorealitytest,
