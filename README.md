@@ -66,6 +66,16 @@ Every generator-specific directory contains clips named after their prompt IDs s
 Unless otherwise noted, we kept the native sampler settings of each platform so downstream evaluators see the exact outputs human raters inspected.
 
 ## 5. Run the Evaluation Code
+0.  Clone only the evaluation code:
+   ```bash
+   git clone https://github.com/video-reality-test/video-reality-test.git
+   ```
+  Clone the evaluation code and video generation submodules:
+  ```bash
+  git clone --recurse-submodules https://github.com/video-reality-test/video-reality-test.git
+  ```
+  Note: If you have git cloned the evaluation code, run `git submodule update --init --recursive` for cloning submodules additionally.
+
 1. Install dependencies:
    ```bash
    conda create -n vrt python=3.10 -y
