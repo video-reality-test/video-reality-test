@@ -19,14 +19,24 @@ We introduce Video Reality Test, an ASMR-sourced video benchmark suite for testi
 
 ## 2. Todo List
 - [x] Public paper
-- [x] Public dataset
+- [x] Public real ASMR dataset (hard+easy)
+- [ ] Public AI-generated ASMR dataset (easy)
+- [x] Public AI-generated ASMR dataset (hard)
 - [x] Public video understanding evaluation code
-- [ ] Publish video generation code
+- [x] Publish video generation code
 
 ## 3. Dataset Introduction
 
-1. We release the real ASMR corpus: real videos, extracted images, and prompts, with a total of 149 (100 hard level + 49 easy).
-2. We release the AI-generated ASMR videos from 13 different video-generation settings (OpenSoraV2, Wan2.2, Sora2 variants, Veo3.1-fast, Diffsynth-Studio Hunyuan/StepFun, etc.), with a total of 149 x 13.
+1. We release the real ASMR corpus with a total of 149 (100 hard level + 49 easy):
+   - real videos (`Real_ASMR/videos`),
+   - extracted images (`Real_ASMR/pictures`),
+   - and prompts for hard level (`Real_ASMR_Prompt.csv`: ref is the image path, text is the prompt).
+2. We release the AI-generated hard level ASMR videos from 13 different video-generation settings with a total of 100 x 13:
+   - OpenSoraV2 (i2v, t2v, it2v),
+   - Wan2.2 (A14B-i2v, A14B-t2v, 5B-it2v),
+   - Sora2 variants (i2v, t2v) (w/o, w/ watermark),
+   - Veo3.1-fast (i2v),
+   - Diffsynth-Studio Hunyuan (i2v, t2v) / StepFun (t2v),
 3. We therefore provide `1 + k` clips (with `k = 13` fakery families), enabling fine-grained studies of how creators vary while sharing identical textual grounding.
 
 
