@@ -1,8 +1,14 @@
-# Video Reality Test
+<p align="center">
+<h1 align="center"> Video Reality Test: Can AI-Generated ASMR Videos fool VLMs and Humans?</h1>
+</p>
 
-- Paper: [paper](https://arxiv.org/abs/2512.13281)
-- Project Page: [homepage](https://video-reality-test.github.io/) 
-- Dataset: [hugginface](https://huggingface.co/datasets/kolerk/Video_Reality_Test), [modelscope](https://modelscope.cn/datasets/wjqkoko/Video_Reality_Test)
+
+<p align="center">
+  <a href="https://arxiv.org/abs/2512.13281" target="_blank"><img src="https://img.shields.io/badge/arXiv-2505.16854-red"></a>
+  <a href="https://video-reality-test.github.io/" target="_blank"><img src="https://img.shields.io/badge/Project-Page-brightgreen"></a>
+  <a href="https://huggingface.co/datasets/kolerk/Video_Reality_Test" target="_blank"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Model-blue"></a>
+  <a href="https://modelscope.cn/datasets/wjqkoko/Video_Reality_Test" target="_blank"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-orange"></a>
+</p>
 
 ## 1. Brief Introduction
 Recent video generators can already mimic real footage, forcing us to rethink how we detect AI-produced clips—especially when audio is involved. To this end, we propose the benchmark Video Reality Test , which tackles this gap with ASMR-origin videos where subtle action–object cues matter and sound must stay locked to the visuals. Models play the “creator” role while VLMs act as reviewers, mirroring a peer-review loop that stresses perceptual realism rather than coarse classification. Experiments reveal how far systems like Veo3.1-Fast can go (fooling many VLMs) and how even strong reviewers such as Gemini 2.5-Pro still trail human experts, highlighting remaining weaknesses around audio–visual alignment and watermark reliance.
