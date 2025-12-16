@@ -1,6 +1,6 @@
 # Video Reality Test
 
-- Paper: [paper]()
+- Paper: [paper](https://arxiv.org/abs/2512.13281)
 - Project Page: [homepage](https://video-reality-test.github.io/) 
 - Dataset: [hugginface](https://huggingface.co/datasets/kolerk/Video_Reality_Test), [modelscope](https://modelscope.cn/datasets/wjqkoko/Video_Reality_Test)
 
