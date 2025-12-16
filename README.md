@@ -77,11 +77,13 @@ Unless otherwise noted, we kept the native sampler settings of each platform so 
 Please cite the VRT paper when using this benchmark:
 
 ```
-@article{vrt2024,
-  title   = {Video Reality Test},
-  author  = {Author, A. and Researcher, B.},
-  journal = {TBD},
-  year    = {2024},
-  note    = {Update with the official venue once available.}
+@misc{wang2025videorealitytest,
+      title={Video Reality Test: Can AI-Generated ASMR Videos fool VLMs and Humans?}, 
+      author={Jiaqi Wang and Weijia Wu and Yi Zhan and Rui Zhao and Ming Hu and James Cheng and Wei Liu and Philip Torr and Kevin Qinghong Lin},
+      year={2025},
+      eprint={2512.13281},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2512.13281}, 
 }
 ```
