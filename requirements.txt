@@ -1,0 +1,8 @@
+numpy>=1.20.0
+pandas>=1.3.0
+tqdm           # 进度条，eval脚本常用于显示进度
+scikit-learn   # 计算评估指标（如准确率、混淆矩阵等）
+fire           # 或者 argparse，用于解析命令行参数
+openai>=1.0.0  # 如果"Judgement"涉及调用GPT-4等模型打分
+Pillow         # 图像处理
+requests       # 网络请求
