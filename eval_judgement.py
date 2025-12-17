@@ -188,7 +188,7 @@ def main_proc(save_path, model_name, data_type, data_path):
 
 if __name__ == '__main__':
     # video understand by gemini-2.5-flash
-    
+    model_name = "your model name"
     # save results path
     save_path_root = f"save/path/root/{model_name}/"
     if not os.path.exists(save_path_root):

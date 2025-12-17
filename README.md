@@ -10,14 +10,26 @@
   <a href="https://modelscope.cn/datasets/wjqkoko/Video_Reality_Test" target="_blank"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Model%20Scope-Dataset-orange"></a>
 </p>
 
-## 1. Brief Introduction
+<p align="center">
+<img src="./assets/teaser.png" width="800" />
+</p>
+
+# <img src="./assets/update.png" width="40" /> Updates
+
+- 2025-12-15: Our paper is available on [arxiv](https://arxiv.org/abs/2512.13281).
+- 2025-12-15: We update the data source.
+- 2025-12-15: We release the TON repo.
+
+## <img src="./assets/abstract.png" width="40" /> 1. Brief Introduction
 We introduce Video Reality Test, an ASMR-sourced video benchmark suite for testing perceptual realism under tight audio–visual coupling, featuring the following dimensions: 
 
 (i) Immersive ASMR video-audio sources. Built on carefully curated real ASMR videos, the benchmark targets fine-grained action–object interactions with diversity across objects, actions, and backgrounds. 
 
 (ii) Peer-Review evaluation. An adversarial creator–reviewer protocol where video generation models act as creators aiming to fool reviewers, while VLMs serve as reviewers seeking to identify fakeness.
 
-## 2. Todo List
+<img src="./assets/diagram.png" width="1000" />
+
+## <img src="./assets/resource.png" width="40" /> 2. Todo List
 - [x] Public paper
 - [x] Public real ASMR dataset (hard+easy)
 - [ ] Public AI-generated ASMR dataset (easy)
@@ -25,12 +37,12 @@ We introduce Video Reality Test, an ASMR-sourced video benchmark suite for testi
 - [x] Public video understanding evaluation code
 - [x] Publish video generation code
 
-## 3. Dataset Introduction
+## <img src="./assets/training.png" width="40" /> 3. Dataset Introduction
 
 1. We release the real ASMR corpus with a total of 149 (100 hard level + 49 easy):
    - real videos (`Real_ASMR/videos`),
    - extracted images (`Real_ASMR/pictures`),
-   - and prompts for hard level (`Real_ASMR_Prompt.csv`: ref is the image path, text is the prompt).
+   - and prompts for hard level (`Real_ASMR_Prompt.csv`: `ref` is the image path, `text` is the prompt).
 2. We release the AI-generated hard level ASMR videos from 13 different video-generation settings with a total of 100 x 13:
    - OpenSoraV2 (i2v, t2v, it2v),
    - Wan2.2 (A14B-i2v, A14B-t2v, 5B-it2v),
@@ -66,25 +78,26 @@ Video_Reality_Test/
 
 Every generator-specific directory contains clips named after their prompt IDs so you can align them with `Real_ASMR_Prompt.csv`. The `__MACOSX` folder is safe to delete—it is added automatically by macOS archivers and contains no useful data.
 
-## 4. Generation Setup
+## <img src="./assets/eval.png" width="40" /> 4. Generation Setup
 - `OpenSoraV2` (https://github.com/hpcaitech/Open-Sora) provided most baseline trajectories.
 - `Wan2.2` (https://github.com/Wan-Video/Wan2.2) complemented cinematic scenes needing richer lighting.
 - `Diffsynth-Studio` generated both `Hunyuan` and `StepFun` variants from identical prompts to compare vendor-specific biases.
 - `Sora 2` clips were authored via the official portal at https://openai.com/sora.
+   - We use this website: https://magiceraser.org/zh/sora-watermark-remover/ to remove the watermarks on `Sora 2` generated videos.
 - `Veo 3.1 fast` generations came from Google's preview interface at https://deepmind.google/technologies/veo/.
 
 Unless otherwise noted, we kept the native sampler settings of each platform so downstream evaluators see the exact outputs human raters inspected.
 
-## 5. Run the Evaluation Code
+## <img src="./assets/catalogue.png" width="40" /> 5. Run the Evaluation Code
 0.  Clone only the evaluation code:
-   ```bash
-   git clone https://github.com/video-reality-test/video-reality-test.git
-   ```
-  Clone the evaluation code and video generation submodules:
-  ```bash
-  git clone --recurse-submodules https://github.com/video-reality-test/video-reality-test.git
-  ```
-  Note: If you have git cloned the evaluation code, run `git submodule update --init --recursive` for cloning submodules additionally.
+      ```bash
+      git clone https://github.com/video-reality-test/video-reality-test.git
+      ```
+      Clone the evaluation code and video generation submodules:
+      ```bash
+      git clone --recurse-submodules https://github.com/video-reality-test/video-reality-test.git
+      ```
+      Note: If you have git cloned the evaluation code, run `git submodule update --init --recursive` for cloning submodules additionally.
 
 1. Install dependencies:
    ```bash
@@ -98,6 +111,13 @@ Unless otherwise noted, we kept the native sampler settings of each platform so 
    api_key = "your_api_key_here"
    model_name = "gemini-2.5-flash"
    ```
+   Additionaly, set your evaluation dataset path {/path/to/judgement/dataset/}/xxx.mp4, and your results save path:
+   ```python
+   # save results path
+   save_path_root = f"save/path/root/{model_name}/"
+   # test data path
+   data_path = "/path/to/judgement/dataset/"
+   ```
 4. Launch the evaluators:
    ```bash
    # video reality test for visual only
@@ -108,7 +128,11 @@ Unless otherwise noted, we kept the native sampler settings of each platform so 
    python eval_judgement_audio.py 
    ```
 
-## 5. Citation
+The video understanding peer-review results are as follows, where the gemini-3-preview is the best model (detailes refer to our paper):
+
+<img src="./assets/results.png" width="1000" />
+
+## 6. Citation
 Please cite the video reality test paper when using this benchmark:
 
 ```
