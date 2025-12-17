@@ -111,7 +111,7 @@ Unless otherwise noted, we kept the native sampler settings of each platform so 
    api_key = "your_api_key_here"
    model_name = "gemini-2.5-flash"
    ```
-   Additionaly, set your evaluation dataset path {/path/to/judgement/dataset/}/xxx.mp4, and your results save path:
+   Additionaly, set your evaluation dataset path `{/path/to/judgement/dataset/}/xxx.mp4`, and your results save path as follows:
    ```python
    # save results path
    save_path_root = f"save/path/root/{model_name}/"
@@ -136,7 +136,7 @@ The video understanding peer-review results are as follows, where the gemini-3-p
 Please cite the video reality test paper when using this benchmark:
 
 ```
-@misc{wang2025videorealitytest,
+@misc{wang2025videorealitytestaigenerated,
       title={Video Reality Test: Can AI-Generated ASMR Videos fool VLMs and Humans?}, 
       author={Jiaqi Wang and Weijia Wu and Yi Zhan and Rui Zhao and Ming Hu and James Cheng and Wei Liu and Philip Torr and Kevin Qinghong Lin},
       year={2025},
