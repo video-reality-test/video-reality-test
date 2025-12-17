@@ -18,7 +18,7 @@
 
 - 2025-12-15: Our paper is available on [arxiv](https://arxiv.org/abs/2512.13281).
 - 2025-12-15: We update the data source.
-- 2025-12-15: We release the TON repo.
+- 2025-12-15: We release the video reality test repo.
 
 ## <img src="./assets/abstract.png" width="40" /> 1. Brief Introduction
 We introduce Video Reality Test, an ASMR-sourced video benchmark suite for testing perceptual realism under tight audio–visual coupling, featuring the following dimensions: 
