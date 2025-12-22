@@ -31,11 +31,11 @@ We introduce Video Reality Test, an ASMR-sourced video benchmark suite for testi
 
 ## <img src="./assets/resource.png" width="40" /> 2. Todo List
 - [x] Public paper
-- [x] Public real ASMR dataset (hard+easy)
-- [ ] Public AI-generated ASMR dataset (easy)
-- [x] Public AI-generated ASMR dataset (hard)
+- [x] Public real & AI-generated ASMR dataset (hard)
+- [ ] Public real & AI-generated ASMR dataset (easy)
 - [x] Public video understanding evaluation code
 - [x] Publish video generation code
+- [ ] Adaptation to the dataset download formats following @NielsRogge's issue
 
 ## <img src="./assets/training.png" width="40" /> 3. Dataset Introduction
 
