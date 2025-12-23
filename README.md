@@ -32,7 +32,7 @@ We introduce Video Reality Test, an ASMR-sourced video benchmark suite for testi
 ## <img src="./assets/resource.png" width="40" /> 2. Todo List
 - [x] Public paper
 - [x] Public real & AI-generated ASMR dataset (hard)
-- [ ] Public real & AI-generated ASMR dataset (easy)
+- [x] Public real & AI-generated ASMR dataset (easy)
 - [x] Public video understanding evaluation code
 - [x] Publish video generation code
 - [ ] Adaptation to the dataset download formats following @NielsRogge's issue
@@ -52,7 +52,7 @@ We introduce Video Reality Test, an ASMR-sourced video benchmark suite for testi
 3. We therefore provide `1 + k` clips (with `k = 13` fakery families), enabling fine-grained studies of how creators vary while sharing identical textual grounding.
 
 
-We give the dataset folders in HuggingFace, the folders and the compressed files `Video_Reality_Test.tar.gz` in ModelScope. Both ModelScope and Hugging Face mirrors host identical content; pick whichever CDN suits your location.
+We give the dataset folders in HuggingFace, the folders and the compressed files `Video_Reality_Test.tar.gz` in ModelScope. 
 The layout below shows how the data is organized once `Video_Reality_Test.tar.gz` is unpacked.
 
 ### Layout
@@ -61,22 +61,32 @@ The layout below shows how the data is organized once `Video_Reality_Test.tar.gz
 
 ```
 Video_Reality_Test/
-├── Video_Reality_Test.tar.gz   # full archive; contains every file below
-├── jq_1/                       # unpacked dataset root (remove stray __MACOSX)
-│   ├── HunyuanVideo/           # Diffsynth-Studio → Hunyuan generations
-│   ├── OpensoraV2/             # OpenSora V2 baselines
-│   ├── Real_ASMR/              # real ASMR reference videos (+optional keyframes)
-│   ├── Real_ASMR_Prompt.csv    # prompt sheet; ref=video filename, text=description
-│   ├── Sora2-it2v/             # Sora2 image-to-video outputs
-│   ├── Sora2-it2v-wo-watermark/# watermark-free variant of the above
-│   ├── Sora2-t2v/              # Sora2 text-to-video runs
-│   ├── StepVideo-t2v/          # Diffsynth-Studio → StepFun generations
-│   ├── Veo3.1-fast/            # Veo 3.1 fast generations
-│   ├── Wan2.2/                 # Wan 2.2 outputs
+├── HunyuanVideo/           # Diffsynth-Studio → Hunyuan generations
+├── OpensoraV2/             # OpenSora V2 baselines
+├── Real_ASMR/              # real ASMR hard level reference videos (+optional keyframes)
+|   ├── videos/
+|   ├── pictures/
+├── Real_ASMR_Prompt.csv    # prompt sheet for hard level; ref=video filename, text=description
+├── Real_ASMR_easy/         # real ASMR easy level reference videos (+optional keyframes)
+|   ├── videos/
+|   ├── pictures/
+|   ├── prompt.csv          # prompt sheet for easy level; ref=video filename, text=description
+├── Fake_ASMR_easy/         # Fake ASMR easy level reference videos
+|   ├── opensora/           # opensora image-to-video outputs
+|   ├── opensora_woprompt/  # opensora image-to-video outputs without prompt
+|   ├── wan/                # wan image-to-video outputs
+|   ├── wan_woprompt/       # wan image-to-video outputs without prompt
+|   ├── prompt.json/        # prompt sheet
+├── Sora2-it2v/             # Sora2 image-to-video outputs
+│── Sora2-it2v-wo-watermark/# watermark-free variant of the above
+│── Sora2-t2v/              # Sora2 text-to-video runs
+│── StepVideo-t2v/          # Diffsynth-Studio → StepFun generations
+├── Veo3.1-fast/            # Veo 3.1 fast generations
+├── Wan2.2/                 # Wan 2.2 outputs
 └── ...
 ```
 
-Every generator-specific directory contains clips named after their prompt IDs so you can align them with `Real_ASMR_Prompt.csv`. The `__MACOSX` folder is safe to delete—it is added automatically by macOS archivers and contains no useful data.
+Every generator-specific directory contains clips named after their prompt IDs so you can align them with `Real_ASMR_Prompt.csv` for hard level and `prompt.csv` for easy level .
 
 ## <img src="./assets/eval.png" width="40" /> 4. Generation Setup
 - `OpenSoraV2` (https://github.com/hpcaitech/Open-Sora) provided most baseline trajectories.
