@@ -181,7 +181,7 @@ def main_proc(save_path, model_name, data_type, data_path):
                 os.replace(tmp_file, pred_file)
 
         pbar.close()
-        print(f"[{prompt_name}] 已保存到 {pred_file}，共处理 {len(video_files)} 个视频。")
+        print(f"[{prompt_name}] saved in {pred_file}, processed {len(video_files)} videos.")
 
 
 
