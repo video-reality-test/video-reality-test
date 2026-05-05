@@ -9,37 +9,31 @@ from moviepy.editor import VideoFileClip
 import base64
 
 class GPT4V_audio():
-    # ... 原有方法保持不变
     def __init__(self, ckpt, model_stamp, test_frame=8):
         self.model_stamp = model_stamp
         if self.model_stamp.startswith('gemini'):
             self.client = OpenAI(api_key=ckpt,
-                                base_url="https://api.chataiapi.com/v1")
+                                base_url="base_url")
         elif self.model_stamp.startswith('gpt'):
             self.client = OpenAI(api_key=ckpt,
-                                  base_url="https://api.chataiapi.com/v1")
+                                  base_url="base_url")
         elif self.model_stamp.startswith('qwen'):
             self.client = OpenAI(api_key=ckpt,
-                                  base_url="https://api.chataiapi.com/v1",
+                                  base_url="base_url",
                                   )
         else:
             self.client = OpenAI(api_key=ckpt,
-                                 base_url= "https://api.probex.top/v1")
-        
-        # elif isinstance(ckpt, list):
-        #     self.client = [OpenAI(api_key=c) for c in ckpt]
+                                 base_url= "base_url")
         self.completion_tokens = 0
         self.prompt_tokens = 0
         self.test_frame = test_frame
         self.resolution = 512
 
     def _video_to_base64_frames(self, video_path, num_frames=6):
-        # ref to https://cookbook.openai.com/examples/gpt_with_vision_for_video_understanding
         video = cv2.VideoCapture(video_path)
         base64Frames = []
         total_frames = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
         frame_interval = max(total_frames // num_frames, 1)
-        # breakpoint()
         for i in range(total_frames):
             success, frame = video.read()
             if not success:
@@ -54,7 +48,7 @@ class GPT4V_audio():
 
     
     def _replace_placeholders(self, prompt: str, images: list, video_len: int, audio_b64: str = None):
-        """构建最终消息，包括 text, image, video, audio"""
+        """construct the final message, including text, image, video, audio"""
         result = []
         img_idx = 0
 
@@ -84,13 +78,13 @@ class GPT4V_audio():
                 if text:
                     result.append({"type": "text", "text": text})
 
-        # 如果有音频，加入 input_audio
+        # if there is audio, add input_audio
         if audio_b64:
             result.append({
                 "type": "input_audio",
                 "input_audio": {
                     "data": audio_b64,
-                    "format": "wav"  # 也可以支持 mp3
+                    "format": "wav"  # also support mp3
                 }
             })
 
@@ -109,7 +103,6 @@ class GPT4V_audio():
         return audio_b64
     
     def _get_response(self, client, image: list, audio, prompt, video_len):
-        # ref to https://platform.openai.com/docs/guides/vision
         while True:
             try:
                 processed_prompt = self._replace_placeholders(prompt, image, video_len, audio_b64=audio)
@@ -171,19 +164,19 @@ class GPT4V_audio():
             break
         return response
     def qa(self, image=None, prompt="", video_desc_flag=True):
-        # 处理视频帧和图片
+        # deal with video and image
         base64_imgs = []
         v_frames = None
         audio_b64 = None
 
         if image is not None:
             if image.endswith(".mp4"):
-                # 视频抽帧
+                # extract frames
                 v_frames = self._video_to_base64_frames(image, num_frames=self.test_frame)
                 base64_imgs += v_frames
                 audio_b64 = self._extract_audio_b64_from_video(image)
 
-                # 视频描述
+                # describe video
                 if video_desc_flag:
                     # prompt = ("The video is split to a series of images sampled "
                     #           "at equal intervals. Answer based on these frames. ") + prompt
@@ -194,12 +187,12 @@ class GPT4V_audio():
                 with open(image, "rb") as f:
                     base64_imgs.append(base64.b64encode(f.read()).decode("utf-8"))
 
-        # 构建消息，包括图片和音频
+        # construct messages, send to model
         # processed_prompt = self._replace_placeholders(prompt, base64_imgs,
         #                                                video_len=len(v_frames) if v_frames else 0,
         #                                                audio_b64=audio_b64)
 
-        # 发送请求给模型
+        # send messages to models
         response = self._get_response(self.client, base64_imgs, audio_b64, prompt, len(v_frames) if v_frames else 0)
         if isinstance(response, str):
             return response
